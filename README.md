@@ -41,21 +41,6 @@ my_project
         |___plots
 ```
 
-### Train classifier 
-The pre-prossesing parameters are set in `param_gen.py`. To pre-process
-raw data, just `cd` into the `scripts/deep_neuro/` directory and source the 
-`prep_data.sh` file using 
-
-`. prep_data.sh -u <user_name> -s <session> -t <trial_length>`. 
-
-How pre-processing using the matnpy module works is that it cuts every trial of a 
-given session into five intervals:
-* pre-sample (500 ms before stimulus onset)
-* sample (500 ms after stimulus onset)
-* delay (500 ms after stimulus offset)
-* pre-match (500 ms before match onset)
-* match (500 ms after match onset)
-
 
 ### Train classifier
 To train a classifier, `cd` into your `scripts/deep_neuro/` directory. Set the processing parameters in `param_gen.py` and source 
