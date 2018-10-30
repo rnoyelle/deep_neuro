@@ -1,6 +1,6 @@
 # deep_neuro
 Continuation of the work of Jannes Schafer  
-([Jannes Schafer](https://github.com/schanso/deep_neuro)). 
+[Jannes Schafer](https://github.com/schanso/deep_neuro). 
 **deep_neuro** presents multiple ways of exploring the Gray dataset. At its 
 core, it features a 
 [convolutional neural network](http://yann.lecun.com/exdb/publis/pdf/lecun-99.pdf) 
@@ -78,5 +78,5 @@ This will generate a summary file in
 `results/training/pvals/`. 
 
 ### Visualize results
-To visualize results, run the jupyter notebook `graph_from_pval.py` 
+To visualize results, run the jupyter notebook `graph_from_pval.ipynb` 
 
