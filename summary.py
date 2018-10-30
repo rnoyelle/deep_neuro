@@ -7,8 +7,8 @@ import numpy as np
 
 
 
-base_path = '/media/rudy/disk2/lucy/'
-raw_path = '/media/rudy/disk2/lucy/'
+base_path =
+raw_path = 
 
 session = os.listdir(raw_path)
 session.remove('unique_recordings.mat')
