@@ -44,7 +44,7 @@ target_cortex = [['Visual'],
                  ['Somatosensory'],
                  ['Prefontal'],
                  ['Parietal'],
-                 ['Visual', 'Motor','Somatosensory', 'Prefontal', 'Parietal'] ]
+                 ['Visual', 'Motor','Somatosensory', 'Prefrontal', 'Parietal'] ]
 
 with open(path_out, 'w') as f:
     f.write('')
