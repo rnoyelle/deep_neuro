@@ -2,8 +2,7 @@
 Continuation of the work of 
 [Jannes Schafer](https://github.com/schanso/deep_neuro). 
 
-**deep_neuro** presents multiple ways of exploring the Gray dataset. At its 
-core, it features a 
+**deep_neuro**  explores the Gray dataset using a
 [convolutional neural network](http://yann.lecun.com/exdb/publis/pdf/lecun-99.pdf) 
 trying to predict either stimulus class or response type from different brain 
 regions and at different points in time.
