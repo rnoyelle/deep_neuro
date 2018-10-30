@@ -29,13 +29,12 @@ import datetime
 ### base path ###
 #################
 
-base_path = '/media/rudy/disk2/lucy/'
+base_path = 
 
 ###################
 ### data params ###
 ###################
 
-sess_no ='150128'
 
 # path
 raw_path = base_path +sess_no+'/session01/' ## /sess_no/session01/recording
@@ -43,7 +42,6 @@ rinfo_path = base_path +sess_no+'/session01/' + 'recording_info.mat'
 
 
 param_index = int(sys.argv[1])
-base_path = 
 file = base_path + 'scripts/_params/training.txt'
 ## Get current params from file
 with open(file, 'rb') as f:
@@ -58,14 +56,14 @@ lowcut, highcut, order = curr_params[6], curr_params[7], curr_params[8]
 cortex = curr_params[9]
 str_to_print = curr_params[10]
 
-
+#sess_no = '150228'
 #decode_for = 'stim'
 #only_correct_trials = False
 
 #align_on, from_time, to_time = 'sample', 0, 500 
-#lowcut, highcut, order = 30, 300, 3
+#lowcut, highcut, order = 80, 300, 3
 
-##cortex = 'Visual' # coding <U16
+##cortex = 'Visual' # 
 #areas = ['V1']
 
 if decode_for =='resp':
