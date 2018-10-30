@@ -5,7 +5,7 @@ Continuation of the work of
 **deep_neuro**  explores the Gray dataset using a
 [convolutional neural network](http://yann.lecun.com/exdb/publis/pdf/lecun-99.pdf) 
 trying to predict either stimulus class or response type from different brain 
-regions and at different points in time.
+regions, from different frequency band and at different points in time.
 It also transforms the raw data from MATLAB to NumPy-ready and applies the usual
 pre-processing steps as well as dealing with the analysis and visualization of the results 
 
@@ -77,6 +77,7 @@ It selects channels into 6 groups :
 ### Get results
 To get results, just `cd` into the `scripts/deep_neuro/` directory and source 
 the submit file using :
+
 `. get_results.sh` 
 
 This will generate a summary file in 
