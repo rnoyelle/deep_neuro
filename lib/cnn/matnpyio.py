@@ -248,7 +248,7 @@ def get_dico_cortex():
     'V6A'],
     'Motor': ['F1', 'F2', 'F6', 'F7'],
     'Temporal': ['Ins', 'STPc'],
-    'Prefontal': ['OPRO',
+    'Prefrontal': ['OPRO',
     'a11',
     'a12',
     'a13',
