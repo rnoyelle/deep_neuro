@@ -6,15 +6,12 @@ import os.path
 import lib.cnn.matnpyio as io
 
 # path
-
 base_path =
 raw_path = '/media/rudy/disk2/lucy/'
 path_out = base_path + 'scripts/_params/training.txt'
 # rinfo_path = raw_path +sess_no+'/session01/' + 'recording_info.mat'
 
-
 # PARAMS
-
 
 #session = [sess_no]
 # to run on all session
@@ -123,15 +120,14 @@ for decode_for in decoders :
                     #cortex_list = 'None'
                     
                     #for align_on, from_time, to_time in intervals :
-                        
-                        
+
                          #print_str = '{}, {}, {}, {}, {}, {}'.format(
                              #sess_no, decode_for, str(areas), 
                              #align_on+'_from'+str(from_time)+'_to'+str(to_time), 
                              #'low'+str(lowcut)+'high'+str(highcut)+'order'+str(order),
                              #str(cortex_list) )
 
-                        
+
                         #params = [sess_no, 
                                   #decode_for, 
                                   #areas, 
@@ -143,9 +139,7 @@ for decode_for in decoders :
                             #f.write('\n' + str(params))
                             
                         #total_runs +=1
-                    
-                        
-                    
+       
                     
 print(total_runs) # print to pass length of array to shell
 
