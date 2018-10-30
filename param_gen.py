@@ -116,7 +116,8 @@ for decode_for in decoders :
                             f.write('\n' + str(params))
                             
                         total_runs +=1
-                        
+            
+            # to run on every available area            
             #all_areas = get_area_names(rinfo_path)
             #for areas in all_areas:
                     #cortex_list = 'None'
