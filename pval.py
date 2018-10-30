@@ -13,7 +13,8 @@ def pval(n_test, r, classes):
     return the p_value for the null hypothesis
     """
     
-    std = (1/classes**3) * (1 - 1/classes) * np.sum(1/n_test) 
+    #std = (1/classes**3) * (1 - 1/classes) * np.sum(1/n_test) 
+    std = np.sqrt (np.sum(1/n_test) - (classes-2)**2/np.sum(n_test) ) /( 2 * classes )
     
     return 1 - erf( abs( r - 1/classes)/ (np.sqrt(2) * std ) ) 
 
@@ -28,11 +29,6 @@ def sign(p)
 base_path = '/media/rudy/disk2/lucy/'
 raw_path = '/media/rudy/disk2/lucy/'
 
-session = os.listdir(raw_path)
-session.remove('unique_recordings.mat')
-
-file_name = base_path + 'results/training/'
-          + sess_no + '_training_'+decode_for+'.csv'
           
 session = 
 #session = os.listdir(raw_path)
@@ -44,14 +40,15 @@ for decode_for in decoders :
     if decode_for == 'stim':
         classes = 5
     else:
-        classes =2
+        classes = 2
     
     
     ## merge files
     df_session = len(session) * [0]
     
     for count, sess_no in enumerate(session):
-        df_session[count] = pd.read_csv(base_path + 'results/training/' + sess_no + '_training_'+decode_for+'.csv')
+        file_name = base_path + 'results/training/'+ sess_no + '_training_'+decode_for+'.csv'
+        df_session[count] = pd.read_csv(file_name)
         
     result = pd.concat(df_session, ignore_index=True)
     
@@ -69,7 +66,7 @@ for decode_for in decoders :
                            #'l2_regularization_penalty',
                            #'time']
      
-    # keep only columns
+    # keep only these columns
     result = result[ ['session', 'decode_for', 'only_correct_trials',
                       'areas', 'cortex', 'elec_type',
                       'frequency_band',
