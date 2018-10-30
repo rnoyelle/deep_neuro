@@ -12,8 +12,9 @@ def pval(n_test, r, classes):
     """
     return the p_value for the null hypothesis
     """
-    
-    #std = (1/classes**3) * (1 - 1/classes) * np.sum(1/n_test) 
+    # Pi = np.array( classes * [1/classes] )
+    # Pi = 0.5 + n_test * (1 - classes/2)/np.sum(n_test)
+    # std = np.sqrt( np.sum( Pi * (1 -Pi)/n_test ) )/classes
     std = np.sqrt (np.sum(1/n_test) - (classes-2)**2/np.sum(n_test) ) /( 2 * classes )
     
     return 1 - erf( abs( r - 1/classes)/ (np.sqrt(2) * std ) ) 
@@ -25,16 +26,17 @@ def sign(p)
     sign = '***' if p < .001 else '**' if p < .01 else '*' if p < .05 else 0
     return(sign)
 
+### PATH
+base_path = 
+raw_path = 
 
-base_path = '/media/rudy/disk2/lucy/'
-raw_path = '/media/rudy/disk2/lucy/'
-
-          
+### SESSION and DECODERS       
 session = 
 #session = os.listdir(raw_path)
 #session.remove('unique_recordings.mat')
 
 decoders = ['stim', 'resp'] # ['stim']
+
 
 for decode_for in decoders :
     if decode_for == 'stim':
@@ -84,6 +86,7 @@ for decode_for in decoders :
     file_name = base_path + 'results/pval/'
             + 'pval_all_sess_'+decode_for+'.csv'
     file_exists = os.path.isfile(file_name)
+    # if file already exist, just append the data.
     if file_exists :
         with open(file_name, 'a') as f:
             df.to_csv(f, mode ='a', index=False, header=False)
