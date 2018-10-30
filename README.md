@@ -48,8 +48,7 @@ raw data, just `cd` into the `scripts/deep_neuro/` directory and source the
 
 `. prep_data.sh -u <user_name> -s <session> -t <trial_length>`. 
 
-The `trial_length` parameter is optional and set to 500 ms by default. How 
-pre-processing using the matnpy module works is that it cuts every trial of a 
+How pre-processing using the matnpy module works is that it cuts every trial of a 
 given session into five intervals:
 * pre-sample (500 ms before stimulus onset)
 * sample (500 ms after stimulus onset)
@@ -57,7 +56,6 @@ given session into five intervals:
 * pre-match (500 ms before match onset)
 * match (500 ms after match onset)
 
-Example call: `. prep_data.sh -u jannesschaefer -s 141023 -t 500`
 
 ### Train classifier
 To train a classifier, `cd` into your `scripts/deep_neuro/` directory. Set the processing parameters in `param_gen.py` and source 
@@ -68,10 +66,33 @@ the submit file using
 The job will be submitted to the 
 cluster and processed once the resources are available.
 
+How pre-processing using the matnpy module works is that :
+it cuts every trial of a given session into five intervals:
+* pre-sample (500 ms before stimulus onset)
+* sample (500 ms after stimulus onset)
+* delay (500 ms after stimulus offset)
+* pre-match (500 ms before match onset)
+* match (500 ms after match onset)
+
+it filters every trial of a given session into five frequency band:
+* 4-8 Hz (theta)
+* 8-12 Hz (alpha)
+* 12-30 Hz (beta)
+* 30-100 Hz (gamma)
+* 80-300 Hz
+
+It selects channels into 6 groups :
+* Visual cortex
+* Motor cortex 
+* Prefrontal cortex
+* Parietal cortex
+* Somatosensory cortex
+* Visual + Motor + Somatosensory + Prefontal + Parietal cortex
+
 
 ### Get results
 To get results, just `cd` into the `scripts/deep_neuro/` directory and source 
-the submit file usiing :
+the submit file using :
 `. get_results.sh` 
 
 This will generate a summary file in 
