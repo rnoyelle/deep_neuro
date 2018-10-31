@@ -29,7 +29,8 @@ import datetime
 ### base path ###
 #################
 
-base_path = 
+base_path =  # .../my_project/
+raw_path = base_path + 'data/raw/' # .../my_project/data/raw/
 
 ###################
 ### data params ###
@@ -37,8 +38,8 @@ base_path =
 
 
 # path
-raw_path = base_path +sess_no+'/session01/' ## /sess_no/session01/recording
-rinfo_path = base_path +sess_no+'/session01/' + 'recording_info.mat'
+raw_path = raw_path + sess_no+'/session01/' ## data/raw/sess_no/session01/file.mat 
+rinfo_path = raw_path + 'recording_info.mat'
 
 
 param_index = int(sys.argv[1])
