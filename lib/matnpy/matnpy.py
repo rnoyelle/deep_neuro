@@ -3,9 +3,6 @@ import os
 import os.path
 
 import numpy as np
-#from .matnpyio import get_data
-#import matnpyio as io
-#import preprocess as pp
 
 from . import matnpyio as io# matnpyio as io
 from . import preprocess as pp#import preprocess as pp
