@@ -93,7 +93,7 @@ def get_subset_by_cortex(sess_no, raw_path,
                          align_on, from_time, to_time,
                          lowcut, highcut, 
                          cortex,
-                         epsillon = 10, order = 3,
+                         epsillon = 100, order = 3,
                          only_correct_trials = True, renorm = True ):
 
     tinfo_path = raw_path + 'trial_info.mat'
@@ -161,7 +161,7 @@ def get_subset_by_areas(sess_no, raw_path,
                          align_on, from_time, to_time,
                          lowcut, highcut, 
                          target_areas,
-                         epsillon = 10, order = 3,
+                         epsillon = 100, order = 3,
                          only_correct_trials = True, renorm = True, elec_type = 'grid' ):
 
     tinfo_path = raw_path + 'trial_info.mat'
