@@ -3,7 +3,7 @@ import sys
 import os
 import os.path
 
-import lib.cnn.matnpyio as io
+import lib.matnpy.matnpyio as io
 
 # path
 base_path =
