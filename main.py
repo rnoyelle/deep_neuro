@@ -4,9 +4,9 @@ import sys
 import os
 import os.path
 
-import lib.cnn.matnpyio as io
+import lib.matnpy.matnpyio as io
 import lib.cnn.cnn as cnn 
-import lib.cnn.matnpy as matnpy
+import lib.matnpy.matnpy as matnpy
 import lib.cnn.helpers as hlp
 
 import tensorflow as tf
