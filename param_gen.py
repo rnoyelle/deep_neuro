@@ -7,7 +7,7 @@ import lib.matnpy.matnpyio as io
 
 # path
 base_path = # .../my_project/
-raw_path = # .../my_project/data/raw/
+raw_path = base_path + 'data/raw/' # .../my_project/data/raw/
 path_out = base_path + 'scripts/_params/training.txt'
 # rinfo_path = raw_path +sess_no+'/session01/' + 'recording_info.mat'
 
