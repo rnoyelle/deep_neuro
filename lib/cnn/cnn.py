@@ -9,6 +9,8 @@ Created on Mon Jan  8 15:20:30 2018
 import tensorflow as tf
 import numpy as np
 
+import sklearn.metrics # for confusion matrix in recall macro
+
 DECAY = .999
 
 def init_weights(shape, dist='random_normal', normalized=True):
