@@ -57,29 +57,48 @@ def get_area_names(rinfo_path):
 
 def get_area_cortex(rinfo_path, cortex, unique = True):
     '''
-    return areas in the cortex area;
+    return areas in the cortex area.
+    
+    Args:
+       rinfo_path : A str. path to recording_info.mat
+       cortex : A str. cortex name
+       unique: A boolean. if True, return only unique area.
+    
     '''
 
     dico_area_to_cortex = get_dico_area_to_cortex()
     area_names = get_area_names(rinfo_path)
     
-    dtype = [('name', '<U6'), ('index', int), ('cortex', '<U16')]
-    values = []
-    for count, area in enumerate(area_names):
-        if area in dico_area_to_cortex: # if not, area isn't in Visual or Parietal or Prefontal or Motor or Somatosensory
-            
-            values.append( (area, count, dico_area_to_cortex[area])  )
-        else:
-            print('Unknow area')
-                    
-    s = np.array(values, dtype=dtype)
+    areas = []
     
-    areas = s[s['cortex'] == cortex]['name']
-    
+    for area in area_names :
+        if dico_area_to_cortex[area] == cortex :
+            areas.append(area)
     if unique == True :
         return( np.unique( areas ) )
     else:
-        return( np.array(areas) )
+        return( areas )
+
+#     dico_area_to_cortex = get_dico_area_to_cortex()
+#     area_names = get_area_names(rinfo_path)
+    
+#     dtype = [('name', '<U6'), ('index', int), ('cortex', '<U16')]
+#     values = []
+#     for count, area in enumerate(area_names):
+#         if area in dico_area_to_cortex: # if not, area isn't in Visual or Parietal or Prefontal or Motor or Somatosensory
+            
+#             values.append( (area, count, dico_area_to_cortex[area])  )
+#         else:
+#             print('Unknow area')
+                    
+#     s = np.array(values, dtype=dtype)
+    
+#     areas = s[s['cortex'] == cortex]['name']
+    
+#     if unique == True :
+#         return( np.unique( areas ) )
+#     else:
+#         return( np.array(areas) )
     
     
 ## not for the cnn
