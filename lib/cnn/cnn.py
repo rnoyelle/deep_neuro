@@ -358,6 +358,13 @@ def l2_loss(weights_cnn, l2_regularization_penalty, y_, y_conv, name):
     return tf.add(unregularized_loss, l2_loss, name=name)
 
 def recall_macro(y_true, y_pred):
+    ''' 
+    Returns the recall macro (average of accuracy of each class) and its error bar.
+    
+    Args :
+        y_true : Ndarray. Ground truth (correct) labels.
+        y_pred : Predicted labels, as returned by a classifier.
+    '''
     confusion_matrix = sklearn.metrics.confusion_matrix(y_true, y_pred)
     n_test = np.sum(confusion_matrix, axis = 1)
     
