@@ -338,6 +338,10 @@ for idx_train, idx_test in kf.split(data, np.argmax(targets[:,:], axis=1)):
                         keep_prob: 1.0
                 })
         
+        
+        y_true = np.argmax(curr_y_test, axis = 1)
+        y_pred = np.argmax(curr_y_predict, axis = 1)
+        
         y_true_per_fold.append( np.argmax(curr_y_test, axis = 1) )
         y_predict_per_fold.append( np.argmax( curr_y_predict, axis = 1) )
         
