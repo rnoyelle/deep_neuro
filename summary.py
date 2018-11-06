@@ -7,14 +7,9 @@ import numpy as np
 
 
 
-base_path =
-raw_path = 
+base_path =  # .../my_project/
+#raw_path = base_path + 'data/raw/' # .../my_project/data/raw/
 
-session = os.listdir(raw_path)
-session.remove('unique_recordings.mat')
-
-file_name = base_path + 'results/training/'
-          + sess_no + '_training_'+decode_for+'.csv'
           
 session = 
 #session = os.listdir(raw_path)
