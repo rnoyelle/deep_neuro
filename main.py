@@ -33,14 +33,8 @@ base_path =  # .../my_project/
 raw_path = base_path + 'data/raw/' # .../my_project/data/raw/
 
 ###################
-### data params ###
+### run params ###
 ###################
-
-
-# path
-raw_path = raw_path + sess_no+'/session01/' ## data/raw/sess_no/session01/file.mat 
-rinfo_path = raw_path + 'recording_info.mat'
-
 
 param_index = int(sys.argv[1])
 file = base_path + 'scripts/_params/training.txt'
@@ -74,6 +68,10 @@ else:
 renorm = True # if True,  Standardize features by removing the mean and scaling to unit variance
 elec_type = 'grid'
 
+
+# path
+raw_path = raw_path + sess_no+'/session01/' ## data/raw/sess_no/session01/ 
+rinfo_path = raw_path + 'recording_info.mat' ## data/raw/sess_no/session01/file.mat 
 
 ##################################################
 #                 CNN PARAMS                     #
