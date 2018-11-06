@@ -238,7 +238,7 @@ def get_targets(decode_for, raw_path, n_chans, elec_type='grid',
 ## GET dict
 
 def get_dico_cortex():
- ''' dico_cortex['cortex']= list of areas in cortex '''
+    ''' dico_cortex['cortex']= list of areas in cortex '''
 
     dico_cortex = {'Parietal': ['AIP',
     'LIP',
