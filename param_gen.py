@@ -61,7 +61,9 @@ for decode_for in decoders :
                 areas = []
                 for cortex in cortex_list :
                     areas_cortex = io.get_area_cortex(rinfo_path, cortex, unique = True)
-                    areas.append(areas_cortex)
+                    for area in areas_cortex :
+                        areas.append(area)
+                   
                 
                 if len(areas) !=0 :
                     for align_on, from_time, to_time in intervals :
