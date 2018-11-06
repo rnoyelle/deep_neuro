@@ -10,6 +10,22 @@ from . import preprocess as pp#import preprocess as pp
 
 
 def get_preprocessed_from_raw(sess_no, raw_path, align_on, from_time, to_time, lowcut, highcut, order) :
+    """Gets raw data and preprocess them.
+    
+    Args:
+        sess_no: A str. num of the session
+        raw_path: A str. Path to the trial_info file.
+        align_on: A str. One of 'sample' , 'match'.
+        from_time : A float. in ms
+        to_time :  A float. in ms. cuts the trial between from_time and to_time. 0 correspond at the onset time of align_on.
+        lowcut : A float. in Hz
+        highcut : A float. in Hz. filters the trials between lowcut and highcu
+        order : A float. order of the frequency filter.
+        
+        
+    Returns:
+        Ndarray of filtered data. 
+    """
     
     #params
     sess = '01'
@@ -92,7 +108,25 @@ def get_subset_by_cortex(sess_no, raw_path,
                          cortex,
                          epsillon = 100, order = 3,
                          only_correct_trials = True, renorm = True ):
-
+    """Gets raw data and preprocess them. Select data trials and channels according to inputs 
+    
+    Args:
+        sess_no: A str. num of the session
+        raw_path: A str. Path to the trial_info file.
+        align_on: A str. One of 'sample' , 'match'.
+        from_time : A float. in ms
+        to_time :  A float. in ms. cuts the trial between from_time and to_time. 0 correspond at the onset time of align_on.
+        lowcut : A float. in Hz
+        highcut : A float. in Hz. filters the trials between lowcut and highcu
+        order : A float. order of the frequency filter.
+        cortex : A str. One of 'Visual', 'Parietal', 'Prefrontal', 'Motor', 'Somatosensory'
+        epsillon : A float. Load a little bit more in time to prevent zero padding of the frequency filters. then the excess is cut before return.
+        only_correct_trials : A boolean. if True, only trials where the monkey succeed the task are selected.
+        renorm : A boolean. If True, data are normed after time cut and frequency filters        
+        
+    Returns:
+        Ndarray of filtered data. 
+    """
     tinfo_path = raw_path + 'trial_info.mat'
     rinfo_path = raw_path + 'recording_info.mat'
     
@@ -131,7 +165,7 @@ def get_subset_by_cortex(sess_no, raw_path,
                     
     s = np.array(values, dtype=dtype)
     
-    elec = s[s['cortex'] == cortex1]['index']
+    elec = s[s['cortex'] == cortex]['index']
     
     data_filtered = data_filtered[:, elec, epsillon : -epsillon ]
 
@@ -161,6 +195,28 @@ def get_subset_by_areas(sess_no, raw_path,
                          epsillon = 100, order = 3,
                          only_correct_trials = True, renorm = True, elec_type = 'grid' ):
 
+        """Gets raw data and preprocess them. Select data trials and channels according to inputs 
+    
+    Args:
+        sess_no: A str. num of the session
+        raw_path: A str. Path to the trial_info file.
+        align_on: A str. One of 'sample' , 'match'.
+        from_time : A float. in ms
+        to_time :  A float. in ms. cuts the trial between from_time and to_time. 0 correspond at the onset time of align_on.
+        lowcut : A float. in Hz
+        highcut : A float. in Hz. filters the trials between lowcut and highcu
+        order : A float. order of the frequency filter.
+        target_areas : A list. list of areas to select.
+        elec_type : A str. One of 'single' (use all electrodes within area as single trials), 
+                                  'grid' (use whole electrode grid), 
+                                  'average' (mean over all electrodes in area).
+        epsillon : A float. Load a little bit more in time to prevent zero padding of the frequency filters. then the excess is cut before return.
+        only_correct_trials : A boolean. if True, only trials where the monkey succeed the task are selected.
+        renorm : A boolean. If True, data are normed after time cut and frequency filters        
+        
+    Returns:
+        Ndarray of filtered data. 
+    """
     tinfo_path = raw_path + 'trial_info.mat'
     rinfo_path = raw_path + 'recording_info.mat'
     
