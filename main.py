@@ -66,7 +66,9 @@ if decode_for =='resp':
 else:
     only_correct_trials = True
 renorm = True # if True,  Standardize features by removing the mean and scaling to unit variance
-elec_type = 'grid'
+elec_type = 'grid' # One of 'single' (use all electrodes within area as single trials), 
+                   #'grid' (use whole electrode grid), 
+                   # 'average' (mean over all electrodes in area)
 
 
 # path
