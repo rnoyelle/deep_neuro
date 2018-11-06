@@ -378,7 +378,7 @@ result = [sess_no, decode_for, only_correct_trials,
           str(y_predict_per_fold),
           renorm,
           n_layers,
-          str(patch_dim), str(pool_dim)
+          str(patch_dim), str(pool_dim),
           str(channels_in),str(channels_out),
           nonlin,
           fc_units,
