@@ -72,8 +72,8 @@ elec_type = 'grid' # One of 'single' (use all electrodes within area as single t
 
 
 # path
-raw_path = raw_path + sess_no+'/session01/' ## data/raw/sess_no/session01/ 
-rinfo_path = raw_path + 'recording_info.mat' ## data/raw/sess_no/session01/file.mat 
+raw_path = raw_path + sess_no + '/session01/' ## .../data/raw/sess_no/session01/ 
+rinfo_path = raw_path + 'recording_info.mat' ## .../data/raw/sess_no/session01/file.mat 
 
 ##################################################
 #                 CNN PARAMS                     #
