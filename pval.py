@@ -27,8 +27,8 @@ def sign(p)
     return(sign)
 
 ### PATH
-base_path = 
-raw_path = 
+base_path =  # .../my_project/
+#raw_path = base_path + 'data/raw/' # .../my_project/data/raw/
 
 ### SESSION and DECODERS       
 session = 
