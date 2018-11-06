@@ -87,7 +87,7 @@ for decode_for in decoders :
                         total_runs +=1
             
             for areas in target_areas:
-                areas_available = get_area_names(rinfo_path) # areas of the session
+                areas_available = io.get_area_names(rinfo_path) # areas of the session
                 
                 if set(areas) < set(areas_available) : # if all areas are available 
                     cortex_list = 'None'
@@ -115,7 +115,7 @@ for decode_for in decoders :
                         total_runs +=1
             
             # to run on every available area            
-            #all_areas = get_area_names(rinfo_path)
+            #all_areas = io.get_area_names(rinfo_path)
             #for areas in all_areas:
                     #cortex_list = 'None'
                     
