@@ -80,8 +80,8 @@ the submit file using :
 `. get_results.sh` 
 
 This will generate a summary file in 
-`results/training/summary/` and a file of pvalues in 
-`results/training/pvals/`. 
+`results/summary/` and a file of pvalues in 
+`results/pvals/`. 
 
 ### Visualize results
 To visualize results, run the jupyter notebook `graph_from_pval.ipynb` 
