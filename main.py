@@ -245,10 +245,15 @@ loss = cnn.l2_loss(weights,
 train_step = tf.train.AdamOptimizer(learning_rate).minimize(loss)
 
 # ACCURACY
-recall_macro = tf.metrics.mean_per_class_accuracy(
-        tf.argmax(y_, 1),
-        tf.argmax(y_conv, 1),
-        classes)
+
+correct_prediction = tf.equal(tf.argmax(y_conv, 1), tf.argmax(y_, 1))
+accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+
+
+#recall_macro = tf.metrics.mean_per_class_accuracy(
+        #tf.argmax(y_, 1),
+        #tf.argmax(y_conv, 1),
+        #classes)
      
 
 
@@ -263,7 +268,7 @@ recall_macro_train_per_fold = []
 recall_macro_test_per_fold = []
 error_bar_per_fold = []
 y_true_per_fold = []
-y_predict_per_fold = []
+y_pred_per_fold = []
 
 
 for idx_train, idx_test in kf.split(data, np.argmax(targets[:,:], axis=1)):
@@ -289,7 +294,7 @@ for idx_train, idx_test in kf.split(data, np.argmax(targets[:,:], axis=1)):
 
             # Every n iterations, print training accuracy
             if i % 10 == 0:
-                train_accuracy = recall_macro.eval(feed_dict={
+                train_accuracy = accuracy.eval(feed_dict={
                         x_: train[ind_train,:,:],
                         y_: train_labels[ind_train,:],
                         keep_prob: 1.0
@@ -311,11 +316,18 @@ for idx_train, idx_test in kf.split(data, np.argmax(targets[:,:], axis=1)):
         ############
             
         # result on train test
-        recall_macro_train = recall_macro.eval(feed_dict={
+        train_predict = y_conv.eval(feed_dict={
                         x_: train,
                         y_: train_labels,
                         keep_prob: 1.0
-                        })
+                })        
+        
+        y_true = np.argmax(train_labels, axis = 1)
+        y_pred = np.argmax(train_predict, axis = 1)
+        
+        recall_macro_train, _ = cnn.recall_macro(y_true, y_pred)
+        
+        print('trainning accuracy: %g' %(recall_macro_train))
         
         recall_macro_train_per_fold.append(recall_macro_train)
 
@@ -324,13 +336,6 @@ for idx_train, idx_test in kf.split(data, np.argmax(targets[:,:], axis=1)):
         curr_x_test = test[:,:,:]
         curr_y_test = test_labels[:,:]
         
-        recall_macro_test = recall_macro.eval(feed_dict={
-                        x_: curr_x_test,
-                        y_: curr_y_test,
-                        keep_prob: 1.0
-                })
-        
-        recall_macro_test_per_fold.append(recall_macro_test)
 
         curr_y_predict = y_conv.eval(feed_dict={
                         x_: curr_x_test,
@@ -342,17 +347,20 @@ for idx_train, idx_test in kf.split(data, np.argmax(targets[:,:], axis=1)):
         y_true = np.argmax(curr_y_test, axis = 1)
         y_pred = np.argmax(curr_y_predict, axis = 1)
         
-        y_true_per_fold.append( np.argmax(curr_y_test, axis = 1) )
-        y_predict_per_fold.append( np.argmax( curr_y_predict, axis = 1) )
+        y_true_per_fold.append( np.argmax(curr_y_test, axis = 1).tolist() )
+        y_pred_per_fold.append( np.argmax( curr_y_predict, axis = 1).tolist() )
         
-        _, error_bar = cnn.recall_macro(y_true, y_pred)
+        recall_macro_test, error_bar = cnn.recall_macro(y_true, y_pred)
+        
+        print('test accuracy : %g' %(recall_macro_test))
+        recall_macro_test_per_fold.append(recall_macro_test)
         error_bar_per_fold.append(error_bar)
         
         
         
         
 recall_macro = np.mean(recall_macro_test_per_fold)
-error_bar_th = np.sum(error_bar_per_fold**2)/n_splits
+error_bar_th = np.sum(np.array(error_bar_per_fold)**2)/n_splits
 error_bar_emp = np.std(recall_macro_test_per_fold)/np.sqrt(n_splits)
         
         
@@ -366,16 +374,16 @@ error_bar_emp = np.std(recall_macro_test_per_fold)/np.sqrt(n_splits)
     
 
 time = str(datetime.datetime.now())
-result = [sess_no, decode_for, only_correct_trials, 
+result = [str(sess_no), decode_for, only_correct_trials, 
           str(areas), cortex, elec_type,
           'low'+str(lowcut)+'high'+str(highcut)+'order'+str(order), 
-          'align_on'+align_on+'from_time'+str(from_time)+'to_time'+to_time,
+          'align_on'+align_on+'from_time'+str(from_time)+'to_time'+str(to_time),
           recall_macro, error_bar_th, error_bar_emp, np.sum(targets, axis=0),
           str(recall_macro_train_per_fold), str(recall_macro_test_per_fold), 
           seed, n_splits, 
           data.shape[0], n_chans, samples_per_trial,
           str(y_true_per_fold),
-          str(y_predict_per_fold),
+          str(y_pred_per_fold),
           renorm,
           n_layers,
           str(patch_dim), str(pool_dim),
@@ -398,7 +406,7 @@ df = pd.DataFrame([result],
                            'recall_macro_train_per_fold', 'recall_macro_test_per_fold',
                            'seed', 'n_splits',
                            'data_size', 'n_chans', 'window_size',
-                           'y_true_per_fold', 'y_predict_per_fold',
+                           'y_true_per_fold', 'y_pred_per_fold',
                            'renorm',
                            'n_layers','patch_dim', 'pool_dim',
                            'channels_in', 'channels_out',
@@ -413,8 +421,8 @@ df = pd.DataFrame([result],
          
           
 # Save to file
-file_name = base_path + 'results/training/'
-          + sess_no + '_training_'+decode_for+'.csv'
+file_name = (base_path + 'results/training/'
+          + sess_no + '_training_'+decode_for+'.csv')
 file_exists = os.path.isfile(file_name)
 if file_exists :
     with open(file_name, 'a') as f:
