@@ -356,7 +356,7 @@ def l2_loss(weights_cnn, l2_regularization_penalty, y_, y_conv, name):
     l2_loss = l2_regularization_penalty * sum(weights.values())
     
     unregularized_loss = tf.reduce_mean(
-            tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y_conv))
+            tf.nn.softmax_cross_entropy_with_logits_v2(labels=y_, logits=y_conv))
     return tf.add(unregularized_loss, l2_loss, name=name)
 
 def recall_macro(y_true, y_pred):
