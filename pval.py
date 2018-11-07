@@ -75,7 +75,7 @@ for decode_for in decoders :
                       'interval',
                       'recall_macro', 'error_bar_th', 'error_bar_emp',
                       'seed', 'n_splits',
-                      'data_size', 'n_chans', 'window_size'] ]
+                      'n_test_per_class', 'data_size', 'n_chans', 'window_size'] ]
     
     ## ADD pval and sign
     
