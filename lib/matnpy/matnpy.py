@@ -195,7 +195,7 @@ def get_subset_by_areas(sess_no, raw_path,
                          epsillon = 100, order = 3,
                          only_correct_trials = True, renorm = True, elec_type = 'grid' ):
 
-        """Gets raw data and preprocess them. Select data trials and channels according to inputs 
+    """Gets raw data and preprocess them. Select data trials and channels according to inputs 
     
     Args:
         sess_no: A str. num of the session
