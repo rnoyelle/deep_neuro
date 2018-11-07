@@ -83,7 +83,7 @@ for decode_for in decoders :
     result['sign'] = result.apply(lambda row : sign(row.pval), axis=1)
     
     # Save file
-    file_name = base_path + 'results/pval/'
+    file_name = base_path + 'results/pvals/'
             + 'pval_all_sess_'+decode_for+'.csv'
     file_exists = os.path.isfile(file_name)
     # if file already exist, just append the data.
