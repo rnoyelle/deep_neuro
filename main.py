@@ -53,7 +53,7 @@ str_to_print = curr_params[10]
 
 #sess_no = '150228'
 #decode_for = 'stim'
-#only_correct_trials = False
+#only_correct_trials = True
 
 #align_on, from_time, to_time = 'sample', 0, 500 
 #lowcut, highcut, order = 80, 300, 3
@@ -368,7 +368,7 @@ error_bar_emp = np.std(recall_macro_test_per_fold)/np.sqrt(n_splits)
 time = str(datetime.datetime.now())
 result = [sess_no, decode_for, only_correct_trials, 
           str(areas), cortex, elec_type,
-          'low'+str(lowcut)+'high'+highcut+'order'+str(order), 
+          'low'+str(lowcut)+'high'+str(highcut)+'order'+str(order), 
           'align_on'+align_on+'from_time'+str(from_time)+'to_time'+to_time,
           recall_macro, error_bar_th, error_bar_emp, np.sum(targets, axis=0),
           str(recall_macro_train_per_fold), str(recall_macro_test_per_fold), 
