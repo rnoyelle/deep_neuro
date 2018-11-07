@@ -284,6 +284,7 @@ for idx_train, idx_test in kf.split(data, np.argmax(targets[:,:], axis=1)):
     ############
     # TRAINING #
     ############
+    print(str_to_print)
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
