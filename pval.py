@@ -30,7 +30,7 @@ def sign(p):
     return(sign)
 
 ### PATH
-base_path = '/home/rudy/Python/rnoyelle_github_test/'  # .../my_project/
+base_path = # .../my_project/
 #raw_path = '/media/rudy/disk2/lucy/' # .../my_project/data/raw/
 
 
