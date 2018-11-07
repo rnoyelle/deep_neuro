@@ -368,6 +368,7 @@ def recall_macro(y_true, y_pred):
         y_pred : Predicted labels, as returned by a classifier.
     '''
     confusion_matrix = sklearn.metrics.confusion_matrix(y_true, y_pred)
+    classes = confusion_matrix.shape[0]
     n_test = np.sum(confusion_matrix, axis = 1)
     
         
