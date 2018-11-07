@@ -261,6 +261,7 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 ##################################################
 #             TRAIN AND TEST                     #
 ##################################################
+print(str_to_print)
 
 kf = StratifiedKFold(n_splits=n_splits,shuffle=True, random_state=seed)
 
@@ -284,7 +285,7 @@ for idx_train, idx_test in kf.split(data, np.argmax(targets[:,:], axis=1)):
     ############
     # TRAINING #
     ############
-    print(str_to_print)
+    
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
