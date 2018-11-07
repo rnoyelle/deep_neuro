@@ -34,9 +34,9 @@ my_project
 |
 |___results
     |___training
-        |___pvals
-        |___summary
-        |___plots
+    |___pvals
+    |___summary
+    |___plots
 ```
 
 
