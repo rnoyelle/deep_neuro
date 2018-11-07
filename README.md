@@ -19,8 +19,7 @@ the directory (`cd deep_neuro/`) and source the environment generator file:
 `. generate_environment.sh`
 
 This will set up your folder structure (see below) and install all required packages. 
-Move raw data into `data/raw/` (and/or already pre-processed data into 
-`data/pre-processed/`) and you should be ready to go.
+Move raw data into `data/raw/` and you should be ready to go.
 
 ```
 my_project
