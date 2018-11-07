@@ -68,7 +68,7 @@ for decode_for in decoders :
                 if len(areas) !=0 :
                     for align_on, from_time, to_time in intervals :
                         
-                         print_str = '{}, {}, {}, {}, {}, {}'.format(
+                        print_str = '{}, {}, {}, {}, {}, {}'.format(
                              sess_no, decode_for, str(areas), 
                              align_on+'_from'+str(from_time)+'_to'+str(to_time), 
                              'low'+str(lowcut)+'high'+str(highcut)+'order'+str(order),
@@ -97,7 +97,7 @@ for decode_for in decoders :
                     for align_on, from_time, to_time in intervals :
                         
                         
-                         print_str = '{}, {}, {}, {}, {}, {}'.format(
+                        print_str = '{}, {}, {}, {}, {}, {}'.format(
                              sess_no, decode_for, str(areas), 
                              align_on+'_from'+str(from_time)+'_to'+str(to_time), 
                              'low'+str(lowcut)+'high'+str(highcut)+'order'+str(order),
