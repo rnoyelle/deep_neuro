@@ -31,7 +31,7 @@ def sign(p):
 
 ### PATH
 base_path = # .../my_project/
-#raw_path = '/media/rudy/disk2/lucy/' # .../my_project/data/raw/
+#raw_path = # .../my_project/data/raw/
 
 
 
