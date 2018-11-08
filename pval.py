@@ -57,7 +57,7 @@ for decode_for in decoders :
             session.append(txt[0])
 
     ## merge files
-    print(len(session))
+    #print(len(session))
     df_session = len(session) * [0]
 
     for count, sess_no in enumerate(session):
@@ -117,7 +117,7 @@ for decode_for in decoders :
     file_exists = os.path.isfile(file_name)
     # if file already exist, just append the data.
     if file_exists :
-        print(file_name," already exists. Summary file hasn't been saved.")
+        print(file_name," already exists. Pval file hasn't been saved.")
         # to append to the file
         #with open(file_name, 'a') as f:
             #df.to_csv(f, mode ='a', index=False, header=False)
