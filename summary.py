@@ -11,8 +11,7 @@ import re
 
 base_path = # .../my_project/
 #raw_path = '/media/rudy/disk2/lucy/' # .../my_project/data/raw/
-
-          
+    
 
 ## DECODERS
 decoders = ['stim', 'resp'] # ['stim']
@@ -47,7 +46,7 @@ for decode_for in decoders :
         break
     
     
-    # select columns
+    # 
     #result = result
                                #'renorm',
                            #'n_layers','patch_dim', 'pool_dim',
@@ -60,7 +59,7 @@ for decode_for in decoders :
                            #'l2_regularization_penalty',
                            #'time']
      
-    # keep only columns
+    # columns to keep
     result = result[ ['session', 'decode_for', 'only_correct_trials',
                            'areas', 'cortex', 'elec_type',
                            'frequency_band',
