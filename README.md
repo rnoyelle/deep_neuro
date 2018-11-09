@@ -59,9 +59,9 @@ it cuts every trial of a given session into five intervals:
 
 it filters every trial of a given session into five frequency band:
 * 4-8 Hz (theta)
-* 8-12 Hz (alpha)
+* 7-12 Hz (alpha)
 * 12-30 Hz (beta)
-* 30-100 Hz (gamma)
+* 30-80 Hz (gamma)
 * 80-300 Hz
 
 It selects channels into 6 groups :
