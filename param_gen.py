@@ -30,9 +30,9 @@ intervals = [['sample', -500, 0], # pre-sample
 
 # frequency_band = [[lowcut, highcut]]
 frequency_band = [[4,8], # theta
-                  [8,12], # alpha
+                  [7,12], # alpha
                   [12,30], # beta
-                  [30,100], # gamma 
+                  [30,80], # gamma 
                   [80,300]] 
 order = 3 # order of the filter
 
