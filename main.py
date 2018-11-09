@@ -362,7 +362,7 @@ for idx_train, idx_test in kf.split(data, np.argmax(targets[:,:], axis=1)):
         
         
 recall_macro = np.mean(recall_macro_test_per_fold)
-error_bar_th = np.sum(np.array(error_bar_per_fold)**2)/n_splits
+error_bar_th = np.sqrt(np.sum(np.array(error_bar_per_fold)**2))/n_splits
 error_bar_emp = np.std(recall_macro_test_per_fold)/np.sqrt(n_splits)
         
         
