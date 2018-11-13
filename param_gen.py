@@ -42,7 +42,7 @@ target_areas = []
 target_cortex = [['Visual'],
                  ['Motor'],
                  ['Somatosensory'],
-                 ['Prefontal'],
+                 ['Prefrontal'],
                  ['Parietal'],
                  ['Visual', 'Motor','Somatosensory', 'Prefrontal', 'Parietal'] ]
 
