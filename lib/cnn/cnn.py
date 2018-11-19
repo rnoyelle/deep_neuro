@@ -389,5 +389,36 @@ def recall_macro(y_true, y_pred):
     return(recall_macro, error_bar)
 
 
+def mean_accuracy_per_class(y_true, y_pred):
+    ''' 
+    Returns the average of accuracy of each class and its error bar.
+    It is call AUC for binary classfieur and recall macro when there is more than 2 class (multi-class).
+    
+    Args :
+        y_true : Ndarray. Ground truth (correct) labels.
+        y_pred : Predicted labels, as returned by a classifier.
+    '''
+    confusion_matrix = sklearn.metrics.confusion_matrix(y_true, y_pred)
+    classes = confusion_matrix.shape[0]
+    n_test = np.sum(confusion_matrix, axis = 1)
+    
+        
+    #fp = confusion_matrix.sum(axis=0) - np.diag(confusion_matrix)  
+    fn = confusion_matrix.sum(axis=1) - np.diag(confusion_matrix)
+    tp = np.diag(confusion_matrix)
+    #tn = confusion_matrix.sum() - (fp + fn + tp)
+    
+    #
+    recall_macro_per_class = tp/(tp+fn)
+    #print(recall_macro_per_class)
+    #
+    recall_macro = np.mean(recall_macro_per_class)
+    
+    # l'écart-type théorique du recall macro, soit un interval de confiance de 0.68 = erf( 1/np.sqrt(2)) --> 1 fois l'écart-type
+    error_bar = np.sqrt( np.sum(recall_macro_per_class * (1 - recall_macro_per_class)/n_test) ) /classes 
+    
+    return(recall_macro, error_bar)
+
+
 
 
