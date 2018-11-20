@@ -106,6 +106,11 @@ for decode_for in decoders :
                       'seed', 'n_splits',
                       'n_test_per_class', 'data_size', 'n_chans', 'window_size'] ]
     
+#     ['session', 'decode_for', 'only_correct_trials', 'interval',
+#        'interval_name', 'areas', 'cortex', 'elec_type', 'frequency_band',
+#        'mean_per_class_accuracy', 'error_bar', 'pval', 'sign', 'data_size',
+#        'n_chans', 'window_size', 'n_splits', 'seed']
+    
     ## ADD pval and sign
     
     result['pval'] = result.apply(lambda row: pval(row.n_test_per_class, row.recall_macro, classes), axis=1)
