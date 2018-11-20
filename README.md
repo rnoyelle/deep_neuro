@@ -13,7 +13,7 @@ pre-processing steps as well as dealing with the analysis and visualization of t
 ### Installation
 To get started, create a project directory using `mkdir my_project/` and change
 into it (`cd my_project/`). Then clone this repository using 
-`git clone https://github.com/rpaul23/deep_neuro.git`. Once cloned, change into 
+`git clone https://github.com/rnoyelle/deep_neuro.git`. Once cloned, change into 
 the directory (`cd deep_neuro/`) and source the environment generator file:
 
 `. generate_environment.sh`
