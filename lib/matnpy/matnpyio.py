@@ -138,6 +138,18 @@ def get_samples(tinfo_path):
         # Extract and return sample classes. substract 1 to have classes range
         # from 0 to 4 instead of 1 to 5
         return np.array([k-1 for k in tinfo['sample_image']])
+       
+       
+def get_nonmatch(tinfo_path):
+    """Gets sample image classes for all trials in a given session. """
+    with h5py.File(tinfo_path, 'r') as f:
+        # 'trial_info.mat' holds only 1 structure
+        tinfo = f['trial_info']
+        
+        # Extract and return sample classes. substract 1 to have classes range
+        # from 0 to 4 instead of 1 to 5
+        return np.array([k-1 for k in tinfo[ 'nonmatch_image']])
+    
     
 #key
 #[u'behavioral_response', u'match_image', u'match_location', u'match_on', u'nonmatch_image', u'nonmatch_location', u'num_trials', u'reaction_time', u'sample_image', u'sample_location', u'sample_off', u'sample_on', u'trial_type']
