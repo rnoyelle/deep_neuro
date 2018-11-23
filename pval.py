@@ -13,7 +13,7 @@ def pval(n_test, r, classes):
     """
     returns the p_value for the null hypothesis
     """
-    n_test = np.array(eval(n_test.replace('.',',')))
+    n_test = np.array(eval(n_test))
     
     # Pi = np.array( classes * [1/classes] )
     # Pi = 0.5 + n_test * (1 - classes/2)/np.sum(n_test)
@@ -100,7 +100,7 @@ for decode_for in decoders :
                       'interval',
                       'mean_per_class_accuracy', 'error_bar', 'n_test_per_class',
                       'seed', 'n_splits',
-                      'data_size', 'n_chans', 'window_size']
+                      'data_size', 'n_chans', 'window_size'] ]
     
 
     
