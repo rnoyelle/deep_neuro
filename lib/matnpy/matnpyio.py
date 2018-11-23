@@ -138,8 +138,7 @@ def get_samples(tinfo_path):
         # Extract and return sample classes. substract 1 to have classes range
         # from 0 to 4 instead of 1 to 5
         return np.array([k-1 for k in tinfo['sample_image']])
-       
-       
+    
 def get_nonmatch(tinfo_path):
     """Gets sample image classes for all trials in a given session. """
     with h5py.File(tinfo_path, 'r') as f:
@@ -270,6 +269,8 @@ def get_dico_cortex():
     'FST',
     'MST',
     'MT',
+    'TEOM',
+    'TEO',
     'TEpd',
     'V1',
     'V2',
@@ -278,9 +279,10 @@ def get_dico_cortex():
     'V4',
     'V4t',
     'V6A'],
-    'Motor': ['F1', 'F2', 'F6', 'F7'],
+    'Motor': ['F1', 'F2','F3' ,'F5', 'F6', 'F7'],
     'Temporal': ['Ins', 'STPc'],
     'Prefrontal': ['OPRO',
+    'a9',
     'a11',
     'a12',
     'a13',
